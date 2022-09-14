@@ -1,0 +1,15 @@
+
+.header {
+	background-color: var(--primary-color);
+}
+
+.header .header-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.header .item {
+	width: 250px;
+	align-self: center;
+}
+
