@@ -1,0 +1,27 @@
+:root {
+  --primary-color:#295C6E;
+  --accent-color:#57C7ED;
+  --light-color: #bfe8fb;
+  --dark-color: #49656E;
+  --light-gray: #EFEFEF;
+  --size-text: 16px;
+  --size-title-intro: 96px; 
+  --size-subtitle-intro: 24px; 
+
+  --size-title: 42px;
+  --size-subtitle: 20px; 
+  --btn-border-radius: 50px;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: var(--size-text);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.sheet {
+  position: relative;
+  width: 1140px;
+  margin: 0 auto;
+}

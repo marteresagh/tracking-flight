@@ -1,0 +1,45 @@
+.header {
+	background-color: var(--primary-color);
+}
+
+.header .header-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	height: 70px;
+}
+
+.header .item {
+	width: 250px;
+	align-self: center;
+}
+
+.header .logo-image {
+	width: 64px;
+	height: 64px;
+	cursor: pointer;
+}
+
+.header .btn-search {
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}
+
+.header .form-group {
+	background-color: #fff;
+	padding: 6px 12px;
+	border-radius: 20px;
+	border: solid 1px #000;
+}
+
+.header .form-group .btn-search {
+	border: none;
+	background-color: #fff;
+}
+
+.header input[type="text"] {
+	border:none;
+	border-bottom: solid 1px #000;
+	width: 200px;
+}

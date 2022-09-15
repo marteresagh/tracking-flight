@@ -1,5 +1,5 @@
 .footer {
-	background-color: #000;
+	background-color: var(--primary-color);
 	color: #fff;
 /* 	font-weight: 700; */
 }
@@ -14,5 +14,11 @@
 
 .footer .item {
 	align-self: center;
+}
+
+.footer .item a {
+	height: 20px;
+	color: #fff;
+	text-decoration: none;
 }
 
