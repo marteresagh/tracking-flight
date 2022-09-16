@@ -1,0 +1,51 @@
+/*
+* Spinner 
+*/
+
+.loading {
+  height: calc(100vh - 70px);
+  background-color: var(--light-color); 
+}
+
+.loading .container {
+ display: flex;
+ height: 100%;
+ justify-content: center;
+}
+
+.loading svg {
+  align-self: center;
+}
+ 
+.loading .svg-calLoader {
+  width: 230px;
+  height: 230px;
+  transform-origin: 115px 115px;
+  animation: 1.4s linear infinite loader-spin;
+}
+
+.loading .cal-loader__plane {
+  fill: var(--dark-color);
+}
+
+.loading .cal-loader__path {
+  stroke: #ffffff;
+  animation: 1.4s ease-in-out infinite loader-path;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader-path {
+  0% {
+    stroke-dasharray: 0, 580, 0, 0, 0, 0, 0, 0, 0;
+  }
+  50% {
+    stroke-dasharray: 0, 450, 10, 30, 10, 30, 10, 30, 10;
+  }
+  100% {
+    stroke-dasharray: 0, 580, 0, 0, 0, 0, 0, 0, 0;
+  }
+}

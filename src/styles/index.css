@@ -25,3 +25,15 @@ body {
   width: 1140px;
   margin: 0 auto;
 }
+
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+ }
+
+
+ .flex-space-around {
+  display: flex;
+  justify-content: space-around;
+ }

@@ -12,7 +12,7 @@ class App extends Component {
 
     this.state = {
       results: [],
-      intro: true,
+      intro: false,
       error: [],
       loading: false,
     };

@@ -1,5 +1,5 @@
 .home {
-  height: calc(100vh - 90px);
+  height: calc(100vh - 70px);
   background-image: url("../images/intro.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */

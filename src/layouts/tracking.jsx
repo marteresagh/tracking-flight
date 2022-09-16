@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Loading from "../components/loading";
+import NotFound from "../components/notFound";
+import Fligths from "../components/fligths";
 
 export default class Tracking extends Component {
   constructor(props) {
@@ -60,7 +63,16 @@ export default class Tracking extends Component {
             codeshared: null,
           },
           aircraft: null,
-          live: null,
+          live: {
+            updated: "2019-12-12T10:00:00+00:00",
+            latitude: 36.2856,
+            longitude: -106.807,
+            altitude: 8846.82,
+            direction: 114.34,
+            speed_horizontal: 894.348,
+            speed_vertical: 1.188,
+            is_ground: false,
+          },
         },
         /*  {
           flight_date: "2022-09-05",
@@ -130,6 +142,16 @@ export default class Tracking extends Component {
       },
     };
 
-    return <React.Fragment></React.Fragment>;
+    return (
+      <React.Fragment>
+        {loading ? (
+          <Loading />
+        ) : results.length === 0 ? (
+          <NotFound error={error_test} />
+        ) : (
+          <Fligths data={data_test} />
+        )}
+      </React.Fragment>
+    );
   }
 }

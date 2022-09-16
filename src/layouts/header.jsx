@@ -51,6 +51,16 @@ export default class Header extends Component {
                 </button>
               </form>
             </div>
+            <div className="item">
+              <button
+                className="btn-random"
+                onClick={() => {
+                  console.log("Sto cliccando"); /* Manca la nuova API */
+                }}
+              >
+                Visualizza volo attivo
+              </button>
+            </div>
           </div>
         </div>
       </header>

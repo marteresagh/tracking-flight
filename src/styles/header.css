@@ -26,6 +26,14 @@
 	cursor: pointer;
 }
 
+.header .btn-random {
+	border: none;
+	background-color: var(--accent-color);
+	padding: 6px 12px;
+	border-radius: 20px;
+	float: right;
+}
+
 .header .form-group {
 	background-color: #fff;
 	padding: 6px 12px;
