@@ -1,0 +1,126 @@
+.flight {
+  min-height: calc(100vh - 90px);
+}
+
+.flight .grid-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template:
+    'name name route route route'
+    'live live live live departure'
+    'image image image image arrival';
+  padding: 10px;
+}
+
+.flight .title {
+  background-color: var(--accent-color);
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border-radius: var(--btn-border-radius);
+}
+
+.flight .live .title {
+  background-color: var(--primary-color);
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border-radius: var(--btn-border-radius);
+  color: #fff
+}
+
+.flight .container {
+  padding: 6px 20px;
+}
+
+
+/* NAME */
+.flight .name {
+  background-color: var(--light-gray);
+  grid-area: name;
+  border-radius: 100px;
+  min-height: 100px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.flight .name .icao {
+  font-size: 48px;
+}
+
+.flight .name .iata {
+  font-size: 40px;
+}
+
+/* ROUTE */
+.flight .route {
+  grid-area: route;
+}
+
+.flight .route .progress-bar {
+  position: relative;
+  margin: 20px 0;
+}
+
+.flight .route .total {
+  background-color: var(--accent-color);
+}
+
+.flight .route .middle {
+  background-color: var(--primary-color);
+  height: 6px;
+  width: 50%;
+}
+
+.flight .route .airplane {
+  width: 32px;
+  position: absolute;
+  left: calc(50% - 16px);
+  top: -10px;
+}
+
+.flight .route .from {
+  text-align: left;
+}
+
+.flight .route .to {
+  text-align: right;
+}
+
+.flight .route p {
+  margin: 0;
+}
+
+.flight .route p.code {
+  font-size: 32px;
+}
+
+
+
+/* LIVE */
+.flight .live {
+  grid-area: live;
+}
+
+
+/* DEPARTURE */
+.flight .departure {
+  grid-area: departure;
+}
+
+
+/* IMAGE */
+.flight .image {
+  grid-area: image;
+  min-height: 200px;
+  background-image: url("../images/ala.jpg");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
+}
+
+/* ARRIVAL */
+.flight .arrival {
+  grid-area: arrival;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Loading from "../components/loading";
-import NotFound from "../components/notFound";
-import Fligths from "../components/fligths";
+import Loading from "../pages/loading";
+import NotFound from "../pages/notFound";
+import Fligths from "../pages/fligths";
 
 export default class Tracking extends Component {
   constructor(props) {
@@ -146,7 +146,7 @@ export default class Tracking extends Component {
       <React.Fragment>
         {loading ? (
           <Loading />
-        ) : results.length === 0 ? (
+        ) : data_test.length === 0 ? (
           <NotFound error={error_test} />
         ) : (
           <Fligths data={data_test} />

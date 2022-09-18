@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Spinner from "../helpers/icon_loading";
+import Spinner from "../components/spinner";
 
 import "../styles/loading.css";
 

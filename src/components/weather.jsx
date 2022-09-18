@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import iconLoading from "../images/Pulse.svg";
 
 export default class Weather extends Component {
   constructor(props) {
@@ -39,13 +40,27 @@ export default class Weather extends Component {
       });
   }
 
+  getValue(value) {
+    if (value === 0) {
+      return 0;
+    } else if (value) {
+      return value;
+    } else {
+      return "N/A";
+    }
+  }
+
+  getLoading() {
+    return <img width="32px" src={iconLoading} />;
+  }
+
   componentDidMount() {
     console.log(this.props.location);
     /*  this.getWeather(this.props.location); */
   }
 
   render() {
-    /*  const { result } = this.state; */
+    /*  const { loading, result, error } = this.state; */
 
     const result = {
       request: {
@@ -87,13 +102,12 @@ export default class Weather extends Component {
       },
     };
 
-    console.log(result);
-    return this.state.loading ? (
-      <div>Caricamento...</div>
-    ) : (
+    const current = result.current;
+    const { loading } = this.state;
+
+    return (
       <div>
-        Meteo
-        <img src={result.current.weather_icons} />
+        <img src={current.weather_icons} />
       </div>
     );
   }

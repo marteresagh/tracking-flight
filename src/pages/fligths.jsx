@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FlightDetails from "../helpers/flightDetails";
+import FlightDetails from "../pages/flightDetails";
 
 export default class Fligths extends Component {
   constructor(props) {
