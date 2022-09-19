@@ -132,20 +132,63 @@
 }
 
 
-
 /* LIVE */
 .flight .live {
   grid-area: live;
 }
 
+.flight .live .status {
+  text-transform: capitalize;
+  margin: 10px 0;;
+}
+
+.flight .circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.blue {
+  background: #37c3be;
+  box-shadow: 0 0 5px #37c3be;
+}
+
+.orange {
+  background: #c36f37;
+  box-shadow: 0 0 5px #c36f37;
+}
+
+.red {
+  background: #c33737;
+  box-shadow: 0 0 5px #c33737;
+}
+
+.green {
+  background: #39c337;
+  box-shadow: 0 0 5px #39c337;
+}
+
+.black {
+  background: #000;
+  box-shadow: 0 0 5px #000;
+}
+
+.yellow {
+  background: #dece21;
+  box-shadow: 0 0 5px #dece21;
+}
+
 
 /* DEPARTURE */
+
 .flight .departure {
   grid-area: departure;
 }
 
 
 /* IMAGE */
+
 .flight .image {
   grid-area: image;
   min-height: 200px;
@@ -159,6 +202,8 @@
 }
 
 /* ARRIVAL */
+
 .flight .arrival {
   grid-area: arrival;
+
 }

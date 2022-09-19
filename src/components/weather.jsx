@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import iconLoading from "../images/Pulse.svg";
+import iconLoading from "../images/pulse.svg";
 
 export default class Weather extends Component {
   constructor(props) {
@@ -25,10 +25,9 @@ export default class Weather extends Component {
       .get("http://api.weatherstack.com/current", { params })
       .then((response) => {
         const apiResponse = response.data;
-        console.log(response);
         console.log(apiResponse);
         this.setState({
-          results: apiResponse,
+          result: apiResponse,
         });
       })
       .catch((error) => {
@@ -56,59 +55,72 @@ export default class Weather extends Component {
 
   componentDidMount() {
     console.log(this.props.location);
-    /*  this.getWeather(this.props.location); */
+    this.getWeather(this.props.location);
   }
 
   render() {
-    /*  const { loading, result, error } = this.state; */
-
-    const result = {
-      request: {
-        type: "City",
-        query: "Los Angeles, Chile",
-        language: "en",
-        unit: "m",
-      },
-      location: {
-        name: "Los Angeles",
-        country: "Chile",
-        region: "Los Lagos",
-        lat: "-42.601",
-        lon: "-73.489",
-        timezone_id: "America/Santiago",
-        localtime: "2022-09-12 10:50",
-        localtime_epoch: 1662979800,
-        utc_offset: "-3.0",
-      },
-      current: {
-        observation_time: "01:50 PM",
-        temperature: 8,
-        weather_code: 122,
-        weather_icons: [
-          "https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0004_black_low_cloud.png",
-        ],
-        weather_descriptions: ["Overcast"],
-        wind_speed: 4,
-        wind_degree: 9,
-        wind_dir: "N",
-        pressure: 1023,
-        precip: 0,
-        humidity: 88,
-        cloudcover: 94,
-        feelslike: 8,
-        uv_index: 2,
-        visibility: 10,
-        is_day: "yes",
-      },
-    };
-
+    const { loading, result, error } = this.state;
     const current = result.current;
-    const { loading } = this.state;
+    console.log("##current", current);
 
-    return (
-      <div>
-        <img src={current.weather_icons} />
-      </div>
-    );
+    if (loading) {
+      return (
+        <table>
+          <tbody>
+            <tr>
+              <td>{this.getLoading()}</td>
+              <td>
+                <div>Vento</div>
+                {this.getLoading()}
+              </td>
+              <td>
+                <div>Umidità</div>
+                {this.getLoading()}
+              </td>
+              <td>
+                <div>Temperatura</div>
+                {this.getLoading()}
+              </td>
+              <td>
+                <div>Precipitazioni</div>
+                {this.getLoading()}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      );
+    } else {
+      return (
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                {current && current.weather_icons ? (
+                  <img src={current.weather_icons} className="circle-icon" />
+                ) : (
+                  "N/A"
+                )}
+              </td>
+              <td>
+                <div>Vento</div>
+                {current && `${this.getValue(current.wind_speed)} km/h`}
+              </td>
+              <td>
+                <div>Umidità</div>
+                {current && `${this.getValue(current.humidity)} %`}
+              </td>
+              <td>
+                <div>Temperatura </div>
+                {current && `${this.getValue(current.temperature)}`} &#8451;
+              </td>
+              <td>
+                <div>Precipitazioni</div>
+                {current && `${this.getValue(current.precip)} mm`}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      );
+    }
   }
 }

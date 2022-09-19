@@ -26,14 +26,16 @@ body {
   margin: 0 auto;
 }
 
-
 .flex-space-between {
   display: flex;
   justify-content: space-between;
  }
 
-
  .flex-space-around {
   display: flex;
   justify-content: space-around;
+ }
+
+ .circle-icon {
+  border-radius: 50%;
  }
