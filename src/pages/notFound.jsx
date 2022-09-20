@@ -1,26 +1,24 @@
-import React, { Component } from "react";
-
+import React from "react";
+import PropTypes from "prop-types";
 import "../styles/error.css";
 
-export default class NotFound extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default function NotFound(props) {
+  const { error } = props;
 
-  render() {
-    const { error } = this.props;
-
-    return (
-      <section className="error">
-        <div className="sheet container">
-          <h1>Impossibile completare la richiesta</h1>
-          <h2>Ci dispiace per il disagio!</h2>
-          <div className="code">
-            <p>Error code: {error.code}</p>
-            <p>Message: {error.message}</p>
-          </div>
+  return (
+    <section className="error">
+      <div className="sheet container">
+        <h1>Impossibile completare la richiesta</h1>
+        <h2>Ci dispiace per il disagio!</h2>
+        <div className="code">
+          <p>Error code: {(error && error.code) || "N/A"}</p>
+          <p>Message: {(error && error.message) || "N/A"}</p>
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
 }
+
+NotFound.propTypes = {
+  error: PropTypes.object,
+};

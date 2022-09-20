@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "../styles/header.css";
 
 import Logo from "../images/logo.svg";
 import Search from "../images/search.svg";
-
-import "../styles/header.css";
 
 export default class Header extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class Header extends Component {
     e.preventDefault();
     console.log("Ricerca volo con codice", this.state.query);
     this.props.onSearch(this.state.query);
-    e.currentTarget.reset();
+    this.setState({ query: "" });
   };
 
   render() {
@@ -35,6 +35,7 @@ export default class Header extends Component {
                 onClick={this.props.onBack}
                 src={Logo}
                 className="logo-image"
+                alt="brand"
               />
             </div>
             <div className="item">
@@ -45,20 +46,16 @@ export default class Header extends Component {
                   placeholder="Inserisci codice ICAO"
                   value={this.state.query || ""}
                   onChange={this.changeText.bind(this)}
+                  required
                 />
                 <button className="btn-search" type="submit" id="submit">
-                  <img src={Search} className="btn-search" />
+                  <img src={Search} className="btn-search" alt="search" />
                 </button>
               </form>
             </div>
             <div className="item">
-              <button
-                className="btn-random"
-                onClick={() => {
-                  console.log("Sto cliccando"); /* Manca la nuova API */
-                }}
-              >
-                Visualizza volo attivo
+              <button className="btn-random" onClick={this.props.onRandom}>
+                Visualizza un volo
               </button>
             </div>
           </div>
@@ -67,3 +64,9 @@ export default class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  onBack: PropTypes.func,
+  onSearch: PropTypes.func,
+  onRandom: PropTypes.func,
+};

@@ -11,19 +11,23 @@ class App extends Component {
     super(props);
 
     this.state = {
-      results: [],
-      intro: false,
-      error: [],
+      results: {},
+      intro: true,
+      error: {},
       loading: false,
     };
+  }
+
+  random_item(items) {
+    return items[Math.floor(Math.random() * items.length)];
   }
 
   searchFlight(icaoCode) {
     this.setState({ loading: true, intro: false });
 
     const params = {
-      access_key: "2eb415d8f5376a96441cc4cc81f3b5ae",
-      limit: 10,
+      access_key: `${process.env.REACT_APP_ACCESS_KEY_FLIGHT}`,
+      limit: 1,
       flight_icao: icaoCode,
     };
 
@@ -47,6 +51,36 @@ class App extends Component {
       });
   }
 
+  searchRandomFlight() {
+    this.setState({ loading: true, intro: false });
+
+    const params = {
+      access_key: `${process.env.REACT_APP_ACCESS_KEY_FLIGHT}`,
+      limit: 1,
+      flight_status: this.random_item(["active", "scheduled", "landed"]),
+      dep_iata: this.random_item(["FCO", "LAX"]),
+      max_delay_arr: 60,
+    };
+
+    axios
+      .get("http://api.aviationstack.com/v1/flights", { params })
+      .then((response) => {
+        console.log(response);
+        const apiResponse = response.data;
+        this.setState({
+          results: apiResponse,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        const apiError = error.response;
+        this.setState({ error: apiError.data.error });
+      })
+      .finally(() => {
+        this.setState({ loading: false });
+      });
+  }
+
   backHome() {
     this.setState({ loading: false, intro: true });
   }
@@ -57,6 +91,7 @@ class App extends Component {
         <Header
           onBack={this.backHome.bind(this)}
           onSearch={this.searchFlight.bind(this)}
+          onRandom={this.searchRandomFlight.bind(this)}
         />
         <div>
           {this.state.intro ? (

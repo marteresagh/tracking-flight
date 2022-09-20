@@ -3,7 +3,7 @@
 */
 
 .loading {
-  height: calc(100vh - 90px);
+  height: calc(100vh - var(--height-header));
   background-color: var(--light-color); 
 }
 

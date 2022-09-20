@@ -1,9 +1,46 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import moment from "moment/moment";
+import "moment-timezone";
+
 import Plane from "../images/plane.svg";
 
 export default class Route extends Component {
-  constructor(props) {
-    super(props);
+  getValue(value) {
+    if (value === 0) {
+      return 0;
+    } else if (value) {
+      return value;
+    } else {
+      return "N/A";
+    }
+  }
+
+  getFlightTime(
+    departureDate,
+    departureTimezone,
+    arrivalDate,
+    arrivalTimezone
+  ) {
+    // get the zone offsets for this time, in minutes
+    let depInTime = moment.tz(
+      moment(departureDate)
+        .utc()
+        .format("YYYY-MM-DDTHH:mm:ss"),
+      departureTimezone
+    );
+    let arrInTime = moment.tz(
+      moment(arrivalDate)
+        .utc()
+        .format("YYYY-MM-DDTHH:mm:ss"),
+      arrivalTimezone
+    );
+
+    let tempTime = moment.duration(arrInTime.diff(depInTime));
+
+    let hours = Math.floor(tempTime.asHours());
+    let mins = Math.floor(tempTime.asMinutes()) - hours * 60;
+    return hours + " h " + mins + " min";
   }
 
   render() {
@@ -30,18 +67,34 @@ export default class Route extends Component {
           </div>
 
           <div className="progress-bar">
-            <img src={Plane} className="airplane" />
-            <div class="total">
-              <div class="middle"></div>
+            <img src={Plane} className="airplane" alt="Plane" />
+            <div className="total">
+              <div className="middle"></div>
             </div>
           </div>
 
           <div className="flex-space-between">
-            <div>Durata totale volo: TODO 9 ore</div>
-            <div>Ritardo: TODO +15 minuti</div>
+            <div>
+              <strong>Durata totale volo:</strong>&nbsp;
+              {this.getFlightTime(
+                departure.estimated,
+                departure.timezone,
+                arrival.estimated,
+                arrival.timezone
+              )}
+            </div>
+            <div>
+              <strong>Ritardo sull'arrivo:</strong>&nbsp;
+              {arrival && this.getValue(arrival.delay)} min
+            </div>
           </div>
         </div>
       </div>
     );
   }
 }
+
+Route.propTypes = {
+  departure: PropTypes.object,
+  arrival: PropTypes.object,
+};

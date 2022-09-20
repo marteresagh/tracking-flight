@@ -1,10 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class Position extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   getIsGround(is_ground) {
     if (is_ground === null) {
       return "N/A";
@@ -16,32 +13,37 @@ export default class Position extends Component {
   }
 
   render() {
-    const { live } = this.props;
+    const {
+      latitude,
+      longitude,
+      altitude,
+      speed_horizontal,
+      is_ground,
+    } = this.props;
+
     return (
       <table>
         <tbody>
           <tr>
             <td>
               <div>Latitudine</div>
-              {live && live.latitude ? live.latitude : "N/A"}
+              {latitude || "N/A"}
             </td>
             <td>
               <div>Longitudine</div>
-              {live && live.longitude ? live.longitude : "N/A"}
+              {longitude || "N/A"}
             </td>
             <td>
               <div>Altitudine</div>
-              {live && live.altitude ? `${live.altitude} m` : "N/A"}
+              {altitude ? `${altitude} m` : "N/A"}
             </td>
             <td>
               <div>Velocità</div>
-              {live && live.speed_horizontal
-                ? `${live.speed_horizontal} km/h`
-                : "N/A"}
+              {speed_horizontal ? `${speed_horizontal} km/h` : "N/A"}
             </td>
             <td>
               <div>Posizione</div>
-              {live && this.getIsGround(live.is_ground)}
+              {this.getIsGround(is_ground) || "N/A"}
             </td>
           </tr>
         </tbody>
@@ -49,3 +51,11 @@ export default class Position extends Component {
     );
   }
 }
+
+Position.propTypes = {
+  latitude: PropTypes.number,
+  longitude: PropTypes.number,
+  altitude: PropTypes.number,
+  speed_horizontal: PropTypes.number,
+  is_ground: PropTypes.bool,
+};

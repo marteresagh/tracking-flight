@@ -1,24 +1,24 @@
 .footer {
 	background-color: var(--primary-color);
 	color: #fff;
-/* 	font-weight: 700; */
+	font-weight: 500;
 }
 
 .footer .footer-container {
 	display: flex;
 	justify-content: space-between;
-	align-content: center;
 	padding: 10px 0;
 	height: 50px;
 }
 
 .footer .item {
 	align-self: center;
+	text-align: center;
 }
 
 .footer .item a {
 	height: 20px;
 	color: #fff;
-	text-decoration: none;
+	text-decoration: underline;
 }
 

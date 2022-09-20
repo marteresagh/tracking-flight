@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FlightDetails from "../pages/flightDetails";
+import FlightDetails from "./flightDetails";
 
 export default class Fligths extends Component {
   constructor(props) {
@@ -15,9 +15,6 @@ export default class Fligths extends Component {
 
   render() {
     const dataFlights = this.props.data.data;
-
-    console.log("##### data-fli: ", dataFlights);
-    const count = dataFlights.length;
 
     return (
       <React.Fragment>

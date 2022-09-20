@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import iconLoading from "../images/pulse.svg";
 
@@ -17,7 +18,7 @@ export default class Weather extends Component {
     this.setState({ loading: true });
 
     const params = {
-      access_key: "64237b352aedd75e0722d113b598aa72",
+      access_key: `${process.env.REACT_APP_ACCESS_KEY_WEATHER}`,
       query: location,
     };
 
@@ -44,24 +45,20 @@ export default class Weather extends Component {
       return 0;
     } else if (value) {
       return value;
-    } else {
-      return "N/A";
     }
+    return "N/A";
   }
 
   getLoading() {
-    return <img width="32px" src={iconLoading} />;
+    return <img width="32px" src={iconLoading} alt="loading" />;
   }
 
   componentDidMount() {
-    console.log(this.props.location);
     this.getWeather(this.props.location);
   }
 
   render() {
-    const { loading, result, error } = this.state;
-    const current = result.current;
-    console.log("##current", current);
+    const { loading, result /* error */ } = this.state;
 
     if (loading) {
       return (
@@ -95,27 +92,44 @@ export default class Weather extends Component {
           <tbody>
             <tr>
               <td>
-                {current && current.weather_icons ? (
-                  <img src={current.weather_icons} className="circle-icon" />
+                {result && result.current && result.current.weather_icons ? (
+                  <img
+                    src={result.current.weather_icons}
+                    className="circle-icon"
+                    alt="weather icon"
+                  />
                 ) : (
                   "N/A"
                 )}
               </td>
               <td>
                 <div>Vento</div>
-                {current && `${this.getValue(current.wind_speed)} km/h`}
+                {(result &&
+                  result.current &&
+                  `${this.getValue(result.current.wind_speed)} km/h`) ||
+                  "N/A"}
               </td>
               <td>
                 <div>Umidità</div>
-                {current && `${this.getValue(current.humidity)} %`}
+                {(result &&
+                  result.current &&
+                  `${this.getValue(result.current.humidity)} %`) ||
+                  "N/A"}
               </td>
               <td>
                 <div>Temperatura </div>
-                {current && `${this.getValue(current.temperature)}`} &#8451;
+                {(result &&
+                  result.current &&
+                  `${this.getValue(result.current.temperature)}`) ||
+                  "N/A"}{" "}
+                &#8451;
               </td>
               <td>
                 <div>Precipitazioni</div>
-                {current && `${this.getValue(current.precip)} mm`}
+                {(result &&
+                  result.current &&
+                  `${this.getValue(result.current.precip)} mm`) ||
+                  "N/A"}
               </td>
             </tr>
           </tbody>
@@ -124,3 +138,7 @@ export default class Weather extends Component {
     }
   }
 }
+
+Weather.propTypes = {
+  location: PropTypes.string,
+};

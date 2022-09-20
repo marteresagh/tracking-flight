@@ -1,19 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import ViewDetails from "./viewDetails";
 
-export default class Departure extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default function Departure(props) {
+  const { departure } = props;
 
-  render() {
-    const { departure } = this.props;
-
-    return (
-      <div className="departure">
-        <div className="title">Dettaglio partenza</div>
-        <ViewDetails data={departure} />
-      </div>
-    );
-  }
+  return (
+    <div className="departure">
+      <div className="title">Dettaglio partenza</div>
+      <ViewDetails
+        airport={departure && departure.airport}
+        terminal={departure && departure.terminal}
+        gate={departure && departure.gate}
+        timezone={departure && departure.timezone}
+        scheduled={departure && departure.scheduled}
+        estimated={departure && departure.estimated}
+        actual={departure && departure.actual}
+        runway={departure && departure.actual_runway}
+      />
+    </div>
+  );
 }
+
+Departure.propTypes = {
+  departure: PropTypes.object,
+};

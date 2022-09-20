@@ -11,12 +11,17 @@
   --size-title: 42px;
   --size-subtitle: 20px; 
   --btn-border-radius: 50px;
+  --height-header: 70px;
 }
 
 body {
   margin: 0;
   box-sizing: border-box;
   font-size: var(--size-text);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+input {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
