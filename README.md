@@ -1,7 +1,7 @@
 # tracking-flight
 
-Traccia il volo tramite codice ICAO (aggiungo anche funzionalità di visualizzare un volo a caso se non si conosce il codice!): API di avionstack.com.
-Nel dettaglio del volo visualizzo anche il meteo attuale nei due aereoporti di partenza e arrivo: API di weatherstack.com.
+Traccia un volo con le API di [avionstack.com](https://www.avionstack.com).
+Controlla il meto nell'aereoporto di arrivo con [weatherstack.com](https://www.weatherstack.com)
 
 ## Mockup in Figma
 
