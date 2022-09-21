@@ -1,7 +1,7 @@
 # tracking-flight
 
 Traccia un volo con le API di [avionstack.com](https://www.avionstack.com).
-Controlla il meto nell'aereoporto di arrivo con [weatherstack.com](https://www.weatherstack.com)
+Controlla il meteo nell'aereoporto di arrivo con le API di [weatherstack.com](https://www.weatherstack.com)
 
 ## Mockup in Figma
 
