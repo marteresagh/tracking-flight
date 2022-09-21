@@ -144,9 +144,8 @@
 }
 
 .flight .live .status {
-
   text-transform: capitalize;
-  margin: 10px 0;;
+  margin: 10px 0;  
 }
 
 .flight .circle {

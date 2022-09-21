@@ -20,6 +20,13 @@ export default function FlightDetails(props) {
     live,
   } = props;
 
+  const getLocation = (arrival) => {
+    if (arrival && arrival.timezone) {
+      let array = arrival.timezone.split("/");
+      return array[array.length - 1];
+    }
+  };
+
   return (
     <section className="flight">
       <div className="sheet grid-container">
@@ -29,9 +36,7 @@ export default function FlightDetails(props) {
           airport={arrival && arrival.airport}
           status={status}
           live={live}
-          location={
-            arrival && arrival.timezone && arrival.timezone.split("/")[1]
-          }
+          location={getLocation(arrival)}
         />
         <Departure departure={departure} />
         <Image />
